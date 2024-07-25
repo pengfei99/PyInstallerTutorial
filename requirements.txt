@@ -1,0 +1,4 @@
+pyspark
+pandas
+PyQt6
+python-dotenv
