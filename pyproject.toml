@@ -1,0 +1,29 @@
+[project]
+name = "casd_secure_hub"
+version = "0.0.1"
+description = "GUI allows user to connect to a remote server"
+readme = "README.md"
+authors = [{ name = "Pengfei", email = "liu.pengfei@hotmail.fr" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["casd"]
+requires-python = ">=3.9"
+
+dependencies = ["pandas >= 2.2.0",
+                 "yfinance",
+                 'tomli; python_version < "3.13"']
+
+    [project.optional-dependencies]
+    build = ["build", "twine"]
+    dev = ["black", "bumpver", "isort", "mypy", "pytest"]
+
+    [project.scripts]
+    stock_catcher = "stock_catcher.__main__:main"
+
+    [project.urls]
+    repository    = "https://github.com/pengfei99/py-packaging"
+    documentation = "https://github.com/pengfei99/py-packaging/blob/main/docs/packaging_python_scripts.md"
