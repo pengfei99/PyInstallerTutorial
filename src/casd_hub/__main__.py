@@ -1,11 +1,15 @@
 import sys
 
 from PyQt6.QtWidgets import QApplication
+from casd_hub.ui import SecureHubWidget
 
-from casd_secure_hub.main_widget import IconApp
 
-if __name__ == "__main__":
+def main():
     app = QApplication(sys.argv)
-    window = IconApp()
+    window = SecureHubWidget()
     window.show()
     sys.exit(app.exec())
+
+
+if __name__ == "__main__":
+    main()
