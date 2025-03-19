@@ -101,7 +101,7 @@ def get_app_title():
 ```
 
 
-> I still have the Permission denied error with `config.toml`, even I use read-only method.
+> I still have the **Permission denied error** with `config.toml`, even I use read-only method.
 > 
 
 ### Build with command line options (Not recommended)
@@ -120,9 +120,71 @@ pyinstaller --onefile --windowed --add-data "src/casd_hub/assets;assets" --add-d
 ```
 
 The explanation of option:
-- `onefile`: one single bundle `.exe`. You can also have ``
+- `onefile`: one single bundle `.exe`.
+- `windowed`: do not open a console, only the app window
+- `icon`: provide a custom icon for the `.exe`
+- `add-data`: include extra resources into the `.exe`
+
+The complete option list can be found [here](https://pyinstaller.org/en/v4.1/usage.html). Click on the `General Options`
+button to view them, if you can see them.
+
+> By default, the generated `.exe` is located in `./dist`
+> 
+### Build with .spec config file (Recommended)
+
+With the command line option, you need to type a lot of things for each build. To avoid this, you can specify all the
+build options in one `.spec` file. Then you run the below command to do the build.
 
 ```shell
-
 pyinstaller main.spec
+```
+
+> You can find the complete doc of the `.spec` in [here](https://pyinstaller.org/en/v4.1/spec-files.html)
+
+Below is an example of the main.spec
+
+```python
+# -*- mode: python ; coding: utf-8 -*-
+
+block_cipher = None
+
+from PyInstaller.utils.hooks import collect_data_files
+
+a = Analysis(
+    ['src\\casd_hub\\main.py'],
+    pathex=[],
+    binaries=[],
+    datas=[('src/casd_hub/assets', 'assets'), ('src/casd_hub/config.toml', 'config.toml')],
+    hiddenimports=[],
+    hookspath=[],
+    hooksconfig={},
+    runtime_hooks=[],
+    excludes=[],
+    noarchive=False,
+    optimize=0,
+)
+pyz = PYZ(a.pure)
+
+exe = EXE(
+    pyz,
+    a.scripts,
+    a.binaries,
+    a.datas,
+    [],
+    name='casd_secure_hub',
+    debug=True,
+    bootloader_ignore_signals=False,
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    runtime_tmpdir=None,
+    console=False,
+    disable_windowed_traceback=False,
+    argv_emulation=False,
+    target_arch=None,
+    codesign_identity=None,
+    entitlements_file=None,
+    icon=['C:\\Users\\PLIU\\Documents\\git\\PyInstallerTutorial\\src\\casd_hub\\assets\\bouclier.ico'],
+)
+
 ```
