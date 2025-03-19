@@ -1,0 +1,3 @@
+include casd_hub/assets/*.png
+include casd_hub/assets/*.svg
+include casd_hub/assets/*.ico
