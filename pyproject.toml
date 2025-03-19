@@ -24,7 +24,7 @@ dependencies = ["PyQt6" ]
     dev = ["black", "bumpver", "isort", "mypy", "pytest"]
 
     [project.scripts]
-    start_hub = "casd_hub.__main__:main"
+    start_hub = "casd_hub.main:main"
 
     [project.urls]
     repository    = "https://github.com/pengfei99/PyInstallerTutorial"
@@ -43,7 +43,7 @@ push            = false
         'current_version = "{version}"',
         'version = "{version}"',
     ]
-    "src/casd_hub/__init__.py" = ["{version}"]
+    "casd_hub/__init__.py" = ["{version}"]
 
 [tool.isort]
 profile                   = "black"
