@@ -84,8 +84,11 @@ class SecureHubWidget(QWidget):
         super().__init__()
         # get config
         _cfg = tomllib.loads(resources.read_text("casd_hub.conf", "config.toml"))
-
+        # set application title
         self.setWindowTitle(str(_cfg.get("ui")["app_title"]))
+        # set application icon
+        casd_bouclier_icon = QIcon(get_icon_path("bouclier.png"))
+        self.setWindowIcon(casd_bouclier_icon)
         self.setGeometry(100, 100, 800, 600)
 
         # Create a vertical layout for the main window
