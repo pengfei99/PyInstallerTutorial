@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "casd_hub"
-version = "0.0.1"
+version = "0.1.0"
 description = "GUI allows user to connect to a remote server"
 readme = "README.md"
 authors = [{ name = "Pengfei", email = "liu.pengfei@hotmail.fr" }]
