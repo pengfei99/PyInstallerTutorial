@@ -1,10 +1,11 @@
-from PyQt6.QtCore import Qt, QSize, QEvent
-from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QGridLayout, QPushButton, QGroupBox
+from PyQt6.QtCore import Qt, QEvent
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QGridLayout, QGroupBox
 from PyQt6.QtGui import QIcon, QPixmap, QFont, QPalette, QColor, QCursor
 from importlib import resources
 import tomllib
 
-from casd_hub.resources import get_icon_path
+from casd_hub.resources import get_icon_path, get_app_title
+
 
 class ClickableWidget(QWidget):
     """Custom QWidget that acts like a button, with a QGroupBox containing an icon and text."""
@@ -83,9 +84,9 @@ class SecureHubWidget(QWidget):
     def __init__(self):
         super().__init__()
         # get config
-        _cfg = tomllib.loads(resources.read_text("casd_hub.conf", "config.toml"))
+
         # set application title
-        self.setWindowTitle(str(_cfg.get("ui")["app_title"]))
+        self.setWindowTitle("CASD Secure Hub")
         # set application icon
         casd_bouclier_icon = QIcon(get_icon_path("bouclier.png"))
         self.setWindowIcon(casd_bouclier_icon)
